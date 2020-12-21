@@ -1,0 +1,232 @@
+Copy these parameters on the DataGeneratorsFinal Matlab File
+
+
+!!!!!!!!!!Training Parameters!!!!!!!!!!!!!
+Train1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+% Functions parameters
+    
+    randomTime = 1;
+    
+    % Normal behavior
+    currentMin = 64;
+    currentMax = 68;
+    size = 10000;
+    
+    % Calculation
+    calculationQuantity = 20;
+    calculationAmplitudeMin = 1;
+    calculationAmplitudeMax = 2;
+    calculationDurationMin = size*0.025;
+    calculationDurationMax = size*0.05;
+    calculationTime = size*0.075;
+    
+    % I/O consumption
+    IO_quantity = 320;
+    IO_lowValue = 2;
+    IO_highValue = 5;
+    IO_lowDuration = size*0.0005;
+    IO_highDuration = size*0.006;
+    IO_time = [size*0.25 size*0.3];
+    
+    % Temperature variation
+    % The temperature function is a linear function ax+b
+    % (temperatureA*temperatureDuration + temperatureB)
+    temperatureQuantity = 4;
+    temperatureUntilEnd = 1;
+    temperatureAMin = -0.01;
+    temperatureAMax = 0.01;
+    temperatureB = 0;
+    temperatureDurationMin = size*0.02;
+    temperatureDurationMax = size*0.04;
+    temperatureTime = size*0.5;
+    
+    % Latch-up
+    latchQuantity = 1;
+    latchUntilEnd = 1;
+    latchValueMin = 4;
+    latchValueMax = 8;
+    latchDurationMin = size*0.6;
+    latchDurationMax = size*0.8;
+    latchTimeMin = size*0.6;
+    latchTimeMax = size*0.7;
+    
+    % Reset
+    resetQuantity = 0;
+    resetOnLatch = 1;
+    resetAfterLatch = size*0.075;
+    resetDuration = size*0.05;
+    resetTime = size*0.8;
+
+
+Train2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% Functions parameters
+    
+    randomTime = 1;
+    
+    % Normal behavior
+    currentMin = 64;
+    currentMax = 68;
+    size = 10000;
+    
+     % Calculation
+    calculationQuantity = 30;
+    calculationAmplitudeMin = 2;
+    calculationAmplitudeMax = 3;
+    calculationDurationMin = size*0.006;
+    calculationDurationMax = size*0.012;
+    calculationTime = size*0.075;
+    
+    % I/O consumption
+    IO_quantity = 250;
+    IO_lowValue = 2;
+    IO_highValue = 4;
+    IO_lowDuration = size*0.0005;
+    IO_highDuration = size*0.002;
+    IO_time = [size*0.25 size*0.3];
+    
+    % Temperature variation
+    % The temperature function is a linear function ax+b
+    % (temperatureA*temperatureDuration + temperatureB)
+    temperatureQuantity = 0;
+    temperatureUntilEnd = 1;
+    temperatureAMin = -0.1;
+    temperatureAMax = 0.1;
+    temperatureB = 0;
+    temperatureDurationMin = size*0.06;
+    temperatureDurationMax = size*0.1;
+    temperatureTime = size*0.5;
+    
+    % Latch-up
+    latchQuantity = 1;
+    latchUntilEnd = 1;
+    latchValueMin = 3.5;
+    latchValueMax = 7;
+    latchDurationMin = size*0.6;
+    latchDurationMax = size*0.8;
+    latchTimeMin = size*0.6;
+    latchTimeMax = size*0.7;
+    
+    % Reset
+    resetQuantity = 0;
+    resetOnLatch = 1;
+    resetAfterLatch = size*0.075;
+    resetDuration = size*0.05;
+    resetTime = size*0.8;
+
+
+
+
+!!!!!!!Test Parameters!!!!!!!!!!!!!!
+Test1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% Functions parameters
+    
+    randomTime = 1;
+    
+    % Normal behavior
+    currentMin = 64;
+    currentMax = 68;
+    size = 600;
+    
+     % Calculation
+    calculationQuantity = 2;
+    calculationAmplitudeMin = 1;
+    calculationAmplitudeMax = 2;
+    calculationDurationMin = size*0.2;
+    calculationDurationMax = size*0.3;
+    calculationTime = size*0.075;
+    
+    % I/O consumption
+    IO_quantity = 20;
+    IO_lowValue = 2;
+    IO_highValue = 5;
+    IO_lowDuration = size*0.0083;
+    IO_highDuration = size*0.1;
+    IO_time = [size*0.25 size*0.3];
+    
+    % Temperature variation
+    % The temperature function is a linear function ax+b
+    % (temperatureA*temperatureDuration + temperatureB)
+    temperatureQuantity = 4;
+    temperatureUntilEnd = 1;
+    temperatureAMin = -0.1;
+    temperatureAMax = 0.1;
+    temperatureB = 0;
+    temperatureDurationMin = size*0.06;
+    temperatureDurationMax = size*0.1;
+    temperatureTime = size*0.5;
+    
+    % Latch-up
+    latchQuantity = 1;
+    latchUntilEnd = 1;
+    latchValueMin = 4;
+    latchValueMax = 6;
+    latchDurationMin = size*0.6;
+    latchDurationMax = size*0.8;
+    latchTimeMin = size*0.6;
+    latchTimeMax = size*0.7;
+    
+    % Reset
+    resetQuantity = 0;
+    resetOnLatch = 1;
+    resetAfterLatch = size*0.075;
+    resetDuration = size*0.05;
+    resetTime = size*0.8;
+
+
+
+
+Test2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% Functions parameters
+    
+    randomTime = 1;
+    
+    % Normal behavior
+    currentMin = 64;
+    currentMax = 68;
+    size = 1000;
+    
+     % Calculation
+    calculationQuantity = 3;
+    calculationAmplitudeMin = 2;
+    calculationAmplitudeMax = 3;
+    calculationDurationMin = size*0.06;
+    calculationDurationMax = size*0.12;
+    calculationTime = size*0.075;
+    
+    % I/O consumption
+    IO_quantity = 25;
+    IO_lowValue = 2;
+    IO_highValue = 4;
+    IO_lowDuration = size*0.005;
+    IO_highDuration = size*0.02;
+    IO_time = [size*0.25 size*0.3];
+    
+    % Temperature variation
+    % The temperature function is a linear function ax+b
+    % (temperatureA*temperatureDuration + temperatureB)
+    temperatureQuantity = 0;
+    temperatureUntilEnd = 1;
+    temperatureAMin = -0.1;
+    temperatureAMax = 0.1;
+    temperatureB = 0;
+    temperatureDurationMin = size*0.06;
+    temperatureDurationMax = size*0.1;
+    temperatureTime = size*0.5;
+    
+    % Latch-up
+    latchQuantity = 1;
+    latchUntilEnd = 1;
+    latchValueMin = 3.5;
+    latchValueMax = 7;
+    latchDurationMin = size*0.6;
+    latchDurationMax = size*0.8;
+    latchTimeMin = size*0.6;
+    latchTimeMax = size*0.7;
+    
+    % Reset
+    resetQuantity = 0;
+    resetOnLatch = 1;
+    resetAfterLatch = size*0.075;
+    resetDuration = size*0.05;
+    resetTime = size*0.8;

@@ -19,12 +19,12 @@
 % [ "Calculation Quantity" "I/O consumption Quantity" "Temperature variation  Quantity" "reset Quantity" "Latch up Quantity"]
 
 
-
+    
 
 clear all
 close all
 
-iteration = 1;
+iteration = 10;
 'Data generation begins.'
 for j=1:iteration
     %%
@@ -33,10 +33,11 @@ for j=1:iteration
     % Parameters
     
     % Folder for datas
-    %folderPath = strcat('/media/adrien/Adrien_Dorise_USB/DIAG-RAD/Simulation_Matlab/Datas/datasGenerator/random_with_latch3/datas', int2str(j));
-    folderPath = strcat('E:\\DIAG_RAD\\DataSets\\Simulation_Matlab\\datasGenerator\\DataExemple\\Example\\datas', int2str(j));       
+    %folderPath = strcat('/media/adrien/Adrien_Dorise_USB1/DIAG_RAD/DataSets/Simulation_Matlab/datasGenerator/DataExemple/TestLatch3.2/datas', int2str(j));
+    folderPath = strcat('H:\\DIAG_RAD\\DataSets\\endThesisValidationData\\simulations\\trainingSet\\bothLatch\\datas', int2str(j));       
     figShown = 0;
-    saveData= 0;
+    saveData= 1;
+    
     
     % Functions parameters
     
@@ -45,27 +46,28 @@ for j=1:iteration
     % Normal behavior
     currentMin = 64;
     currentMax = 68;
-    size = 1000;
+    size = 10000;
     
      % Calculation
-    calculationQuantity = 3;
+    calculationQuantity = 30;
     calculationAmplitudeMin = 2;
     calculationAmplitudeMax = 3;
-    calculationDurationMin = size*0.06;
-    calculationDurationMax = size*0.12;
+    calculationDurationMin = size*0.006;
+    calculationDurationMax = size*0.012;
     calculationTime = size*0.075;
     
     % I/O consumption
-    IO_quantity = 25;
+    IO_quantity = 250;
     IO_lowValue = 2;
     IO_highValue = 4;
-    IO_lowDuration = size*0.005;
-    IO_highDuration = size*0.02;
+    IO_lowDuration = size*0.0005;
+    IO_highDuration = size*0.002;
     IO_time = [size*0.25 size*0.3];
     
     % Temperature variation
     % The temperature function is a linear function ax+b
     % (temperatureA*temperatureDuration + temperatureB)
+    randomTempTime = 0;
     temperatureQuantity = 0;
     temperatureUntilEnd = 1;
     temperatureAMin = -0.1;
@@ -76,14 +78,16 @@ for j=1:iteration
     temperatureTime = size*0.5;
     
     % Latch-up
-    latchQuantity = 1;
-    latchUntilEnd = 1;
-    latchValueMin = 5;
-    latchValueMax = 10;
-    latchDurationMin = size*0.6;
-    latchDurationMax = size*0.8;
-    latchTimeMin = size*0.6;
-    latchTimeMax = size*0.7;
+    latchQuantity = 55;
+    latchUntilEnd = 0;
+    %latchValueMin = 3.5 / 40;
+    %latchValueMax = 7 / 50;
+    latchValueMin = 3.5;
+    latchValueMax = 50;
+    latchDurationMin = size*0.003;
+    latchDurationMax = size*0.006;
+    latchTimeMin = size*0.15;
+    latchTimeMax = size*0.9;
     
     % Reset
     resetQuantity = 0;
@@ -91,22 +95,7 @@ for j=1:iteration
     resetAfterLatch = size*0.075;
     resetDuration = size*0.05;
     resetTime = size*0.8;
-    
-    
-    
- if saveData == 1
-        if ~exist(folderPath, 'dir')[folderPath '/' 'dataSet.mat']
-            ['Folder creation: ' folderPath]
-            mkdir(folderPath);
-        end
-        save(fullfile(folderPath,'parametres'));
-        save('parametresTemp');
-        nameParamTemp = (struct2cell(whos).');
-        nameParamTemp = nameParamTemp(:,1);
-        csvFile = table(nameParamTemp,struct2cell(load('parametresTemp.mat')));
-        writetable(csvFile,fullfile(folderPath,'parametres.csv'));
-        writetable(csvFile,fullfile(folderPath,'parametres.txt'));
-    end
+
     
     
     %%
@@ -137,7 +126,7 @@ for j=1:iteration
     % Temperature variation
     temperatureA = (temperatureAMax - temperatureAMin)*rand(1,temperatureQuantity) + temperatureAMin;
     temperatureB = temperatureB.*ones(temperatureQuantity);
-    if randomTime == 1
+    if randomTempTime == 1
         temperatureTimeMin = size*rand(1,temperatureQuantity);
         temperatureTimeMax = temperatureTimeMin;
     else
@@ -242,11 +231,11 @@ for j=1:iteration
         Header = ["Data Sets simulated by the Matlab function dataSetsGenerator","","";"Time (s)","NoLatchCurrent (mA)","LatchCurrent (mA)"];
         
         save('dataSet.mat', 'dataSet')
-        dataSetTxt = [Header(1,1);"LatchCurrent (mA)";dataSet];
+        dataSetTxt = [Header(1,1) "";"Index (s)","LatchCurrent (mA)";xData,dataSet];
         save('dataSetTxt.mat','dataSetTxt')
         
         save('normalCurrent.mat', 'normalCurrent')
-        normalCurrentTxt = [Header(1,1);"normalCurrent (mA)";normalCurrent];
+        normalCurrentTxt = [Header(1,1),"";"Index (s)","normalCurrent (mA)";xData, normalCurrent];
         save('normalCurrentTxt.mat','normalCurrentTxt')
        
         save('xData.mat', 'xData')
@@ -265,7 +254,8 @@ for j=1:iteration
         
         % Saving in a dedicated folder
         ['Saving datas in: ' folderPath]
-
+        mkdir(folderPath)
+        
         save([folderPath '/' 'dataSet.mat'], 'dataSet')        
         csvFile = load('dataSetTxt.mat');
         csvFile = csvFile.dataSetTxt;
